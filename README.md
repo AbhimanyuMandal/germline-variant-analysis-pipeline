@@ -99,7 +99,7 @@ This project aims to:
 # 📖 Bioinformatics Workflow
 
 <p align="center">
-<img src="assets/workflow.png" width="90%">
+<img src="assets/workflow_1.png" width="90%">
 </p>
 
 The workflow follows a standardized computational strategy for processing Whole Exome Sequencing data, beginning with raw sequencing reads and progressing through quality assessment, alignment, variant discovery, annotation, and downstream statistical analysis.
