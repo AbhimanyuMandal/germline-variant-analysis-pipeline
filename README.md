@@ -297,13 +297,9 @@ Summarize, prioritize, and visualize annotated variants.
 
 | Script | Description |
 |---------|-------------|
-| `01_quality_control.sh` | Perform sequencing quality assessment using FastQC |
-| `02_alignment.sh` | Align sequencing reads with BWA-MEM |
-| `03_post_alignment.sh` | Sort BAM files, mark duplicates, and perform BQSR |
-| `04_variant_calling.sh` | Execute germline variant calling using GATK |
-| `05_variant_filtering.sh` | Apply quality filters to variant calls |
-| `06_annotation.sh` | Annotate variants using VEP |
-| `07_variant_prioritization.R` | Perform downstream filtering, visualization, and prioritization |
+| `germline_variant_pipeline.sh` | Performs read alignment, BAM processing, variant calling, filtering, and annotation |
+| `merge_maf_files.R` | Imports and merges MAF files for downstream analyses |
+| `average_depth_coverage.sh` | Calculates average sequencing depth from filtered VCF files |
 
 ---
 
@@ -315,8 +311,6 @@ germline-variant-analysis-pipeline/
 ├── README.md
 ├── LICENSE
 ├── .gitignore
-├── environment.yml
-├── CITATION.cff
 │
 ├── assets/
 │   ├── banner.png
@@ -326,96 +320,23 @@ germline-variant-analysis-pipeline/
 │   └── folder-structure.png
 │
 ├── scripts/
-│   ├── 01_quality_control.sh
-│   ├── 02_alignment.sh
-│   ├── 03_post_alignment.sh
-│   ├── 04_variant_calling.sh
-│   ├── 05_variant_filtering.sh
-│   ├── 06_annotation.sh
-│   └── 07_variant_prioritization.R
-│
-├── config/
-│
-├── data/
-│   ├── raw/
-│   └── processed/
-│
-├── docs/
-│
-├── references/
-│
-└── results/
+    ├── README.md
+    ├── Identifying_variants.sh
+    ├── Extracting_data.R
+    └── average_depth_coverage.sh
 ```
 
 ---
 
-# ⚙️ Installation
+# 🚀 Workflow Scripts
 
-## Clone the repository
+The repository contains three primary scripts:
 
-```bash
-git clone https://github.com/AbhimanyuMandal/germline-variant-analysis-pipeline.git
-```
-
-Move into the project directory:
-
-```bash
-cd germline-variant-analysis-pipeline
-```
-
----
-
-## Install dependencies
-
-The pipeline is designed for Linux systems.
-
-Create the Conda environment using:
-
-```bash
-conda env create -f environment.yml
-```
-
-Activate the environment:
-
-```bash
-conda activate germline-pipeline
-```
-
----
-
-# 🚀 Running the Pipeline
-
-Execute the workflow sequentially.
-
-```text
-01_quality_control.sh
-
-↓
-
-02_alignment.sh
-
-↓
-
-03_post_alignment.sh
-
-↓
-
-04_variant_calling.sh
-
-↓
-
-05_variant_filtering.sh
-
-↓
-
-06_annotation.sh
-
-↓
-
-07_variant_prioritization.R
-```
-
-Each module is independent and can be executed individually if required.
+| Script | Purpose |
+|---------|----------|
+| Identifying_variants.sh | End-to-end germline variant analysis pipeline |
+| Extracting_data.R | Import and merge MAF files for downstream analysis |
+| average_depth_coverage.sh | Calculate sequencing depth statistics |
 
 ---
 
@@ -463,25 +384,27 @@ The repository demonstrates the computational implementation of the pipeline rat
 
 # 📚 References
 
-This workflow is based on widely adopted bioinformatics methodologies and publicly available software, including:
+## 📚 Software
 
-- GATK Best Practices
+This workflow utilizes widely adopted open-source bioinformatics software, including:
+
+- FastQC
 - BWA-MEM
 - SAMtools
 - Picard
-- FastQC
+- GATK
 - Variant Effect Predictor (VEP)
 - R
 - maftools
 - ggplot2
 
-Please cite the respective software packages if used in your own research.
+Please cite the respective software packages when using them in research.
 
 ---
 
 # 🔒 Research Notice
 
-> **Publication Notice**
+> **Research Notice**
 
 This repository contains the computational implementation of a germline variant analysis workflow developed for Whole Exome Sequencing (WES) data.
 
@@ -506,24 +429,10 @@ This repository is intended to demonstrate the engineering, reproducibility, and
 
 Planned enhancements include:
 
-- Snakemake implementation
-- Nextflow workflow
+- Nextflow implementation
+- Snakemake workflow
 - Docker containerization
-- Singularity support
-- Automated MultiQC reporting
-- Structural Variant (SV) Detection
-- Copy Number Variation (CNV) Analysis
-- Workflow automation using GitHub Actions
-- Clinical reporting module
-- Cloud-based deployment
-
----
-
-# 🤝 Contributing
-
-Suggestions for improving workflow organization, documentation, and reproducibility are welcome.
-
-If you identify bugs or have ideas for improvements, feel free to open an issue or submit a pull request.
+- GitHub Actions
 
 ---
 
@@ -547,7 +456,7 @@ Citation information will be updated following publication.
 
 ## Abhimanyu Mandal
 
-Computational Biologist | Bioinformatician | Healthcare Data Scientist
+Computational Biologist | Bioinformatics Researcher | Healthcare Data Scientist
 
 🌐 **Portfolio**
 
