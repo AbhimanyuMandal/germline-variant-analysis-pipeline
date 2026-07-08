@@ -1,0 +1,51 @@
+# R
+.Rhistory
+.RData
+.Ruserdata
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# RStudio
+.Rproj.user/
+
+# IDE
+.vscode/
+.idea/
+
+# NGS Files
+*.fastq
+*.fastq.gz
+*.fq
+*.fq.gz
+*.sam
+*.bam
+*.bai
+*.cram
+*.vcf
+*.vcf.gz
+*.g.vcf
+*.maf
+
+# Index Files
+*.fai
+*.dict
+
+# QC Reports
+fastqc/
+multiqc/
+
+# Output Files
+results/
+output/
+cache/
